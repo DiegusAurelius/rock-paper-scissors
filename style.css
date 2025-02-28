@@ -286,3 +286,17 @@ img {
 footer {
   padding-block: var(--space-m);
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  text-align: center;
+  font-size: var(--step--1);
+}

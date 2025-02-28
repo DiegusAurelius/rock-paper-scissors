@@ -48,7 +48,7 @@ function playRound(humanChoice, computerChoice) {
   console.log('Round', roundCount + 1);
 
   if (humanChoice === computerChoice) {
-    console.log(`${humanChoice} vs ${computerChoice}. It's a tie!`);
+    console.log(`${humanChoice} vs ${computerChoice}. It's a draw!`);
   } else if (
     (humanChoice === 'rock' && computerChoice === 'scissors') ||
     (humanChoice === 'paper' && computerChoice === 'rock') ||
@@ -83,7 +83,7 @@ function playNextRound() {
     } else if (humanScore < computerScore) {
       console.log('You lost the game!');
     } else {
-      console.log(`The game is a tie!`);
+      console.log(`The game is a draw!`);
     }
   }
 }
