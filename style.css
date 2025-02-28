@@ -1,0 +1,288 @@
+:root {
+  --color-dark: hsl(210, 20%, 10%);
+  --color-gray: hsl(210, 10%, 55%);
+  --color-light: hsl(210, 20%, 90%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-black: hsl(0, 0%, 0%);
+  --color-link: hsl(208, 100%, 62%);
+  --color-primary: hsl(50, 85%, 50%);
+
+  --space-3xs: clamp(0.31rem, 0.31rem + 0vw, 0.31rem);
+  --space-2xs: clamp(0.56rem, 0.54rem + 0.11vw, 0.63rem);
+  --space-xs: clamp(0.88rem, 0.85rem + 0.11vw, 0.94rem);
+  --space-s: clamp(1.13rem, 1.08rem + 0.22vw, 1.25rem);
+  --space-m: clamp(1.69rem, 1.62rem + 0.33vw, 1.88rem);
+  --space-l: clamp(2.25rem, 2.16rem + 0.43vw, 2.5rem);
+  --space-xl: clamp(3.38rem, 3.24rem + 0.65vw, 3.75rem);
+
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Typography */
+  font-size: clamp(1rem, 0.5vw + 0.9rem, 1.1rem);
+  --font-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --measure: 60ch;
+
+  /* Font size scale using a ratio close to 1.2 (minor third) */
+  --step--2: clamp(0.7rem, 0.72rem + -0.03vw, 0.72rem); /* Small text */
+  --step--1: clamp(0.84rem, 0.85rem + -0.02vw, 0.86rem); /* Secondary text */
+  --step-0: clamp(1rem, 1rem + 0vw, 1rem); /* Body text */
+  --step-1: clamp(1.2rem, 1.18rem + 0.04vw, 1.22rem); /* Large body */
+  --step-2: clamp(1.44rem, 1.38rem + 0.1vw, 1.49rem); /* H3 */
+  --step-3: clamp(1.73rem, 1.62rem + 0.21vw, 1.83rem); /* H2 */
+  --step-4: clamp(2.07rem, 1.89rem + 0.37vw, 2.24rem); /* H1 */
+  --step-5: clamp(2.49rem, 2.19rem + 0.61vw, 2.73rem); /* Hero text */
+
+  /* Line heights */
+  --leading-sm: 1.2; /* Headings */
+  --leading-base: 1.5; /* Body text */
+  --leading-md: 1.6; /* Chef's kiss */
+  --leading-lg: 1.7; /* Small text */
+
+  /* Border radius */
+  --radius: 0.4em;
+}
+
+html {
+  min-height: 100dvh;
+  box-sizing: border-box;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@media (prefers-reduced-motion) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100dvh;
+  max-width: clamp(300px, 90%, 1200px);
+  margin: 0 auto;
+  font-size: var(--step-1);
+  line-height: var(--leading-md);
+  color: var(--color-light);
+  background: var(--color-dark);
+  font-family: var(--font-base);
+}
+
+p,
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+:is(p, li) {
+  max-inline-size: var(--measure);
+  text-wrap: pretty;
+}
+
+:is(h1, h2, h3) {
+  font-weight: bold;
+  text-wrap: balance;
+  line-height: var(--leading-sm);
+}
+
+.text-small {
+  font-size: var(--step--2);
+  line-height: var(--leading-lg);
+}
+
+.text-hero {
+  font-size: var(--step-5);
+  line-height: var(--leading-sm);
+  color: var(--color-primary);
+}
+
+p,
+li,
+input,
+button {
+  font: inherit;
+  line-height: inherit;
+}
+
+h3 {
+  font-size: var(--step-2);
+}
+
+h2 {
+  font-size: var(--step-3);
+}
+
+h1 {
+  font-size: var(--step-4);
+}
+
+/* Base vertical rhythm */
+* + h1,
+* + h2,
+* + h3 {
+  margin-block-start: var(--space-xl);
+}
+
+* + p {
+  margin-block-start: var(--space-s);
+}
+
+/* Specific heading adjustments */
+h1 {
+  margin-block-end: var(--space-m);
+}
+
+h2 {
+  margin-block-end: var(--space-s);
+}
+
+h3 {
+  margin-block-end: var(--space-xs);
+}
+
+/* Lists */
+ul {
+  list-style: none;
+}
+
+ol,
+ul {
+  list-style-position: inside;
+}
+
+* + ul,
+* + ol {
+  margin-block-start: var(--space-s);
+}
+
+ul,
+ol {
+  margin-block-end: var(--space-s);
+}
+
+ol {
+  list-style: none;
+  counter-reset: steps;
+}
+
+ol li {
+  counter-increment: steps;
+}
+
+ol li:before {
+  content: counter(steps) ' ';
+  font-weight: 800;
+  color: var(--color-primary);
+  font-size: var(--step-1);
+  padding-right: var(--space-3xs);
+}
+
+/* Larger spacing for sections */
+section + section {
+  margin-block-start: var(--space-xl);
+}
+
+hr {
+  margin-block: var(--space-l);
+  border: none;
+  border-top: 0.15em solid var(--color-gray);
+  color: var(--color-gray);
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  border-radius: var(--radius);
+}
+
+input {
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-2xs);
+  background-color: var(--color-white);
+  color: var(--color-dark);
+}
+
+button {
+  -webkit-appearance: none;
+  appearance: none;
+  text-align: center;
+  color: var(--color-black);
+  background-color: var(--color-link);
+  box-shadow: none;
+  cursor: pointer;
+  border: none;
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-s);
+  font-weight: 800;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+a:not([class]) {
+  color: var(--color-link);
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+}
+
+a:not([class]):hover,
+a:not([class]):focus {
+  text-decoration: underline;
+  text-decoration-thickness: 0.15em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+*:focus {
+  outline: 0.125em solid transparent;
+  outline-offset: 0.125em;
+}
+
+*:focus-visible {
+  outline: 0.125em solid var(--color-primary);
+  outline-offset: 0.25em;
+  border-radius: var(--radius);
+}
+
+:target {
+  scroll-margin-block: 5ex;
+}
+
+footer {
+  padding-block: var(--space-m);
+}

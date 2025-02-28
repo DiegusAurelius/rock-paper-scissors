@@ -9,11 +9,11 @@ function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3) + 1;
 
   if (randomNumber === 1) {
-    computerChoice = 'Rock';
+    computerChoice = 'rock';
   } else if (randomNumber === 2) {
-    computerChoice = 'Paper';
+    computerChoice = 'paper';
   } else if (randomNumber === 3) {
-    computerChoice = 'Scissors';
+    computerChoice = 'scissors';
   }
   return computerChoice;
 }
@@ -26,14 +26,13 @@ function getHumanChoice(message = 'Rock, paper or scissors?') {
     gameActive = false;
     return null;
   } else {
-    humanChoice = humanChoice.trim();
-    humanChoice = capitalize(humanChoice);
+    humanChoice = humanChoice.trim().toLowerCase();
   }
 
   if (
-    humanChoice === 'Rock' ||
-    humanChoice === 'Paper' ||
-    humanChoice === 'Scissors'
+    humanChoice === 'rock' ||
+    humanChoice === 'paper' ||
+    humanChoice === 'scissors'
   ) {
     return humanChoice;
   } else {
@@ -51,9 +50,9 @@ function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     console.log(`${humanChoice} vs ${computerChoice}. It's a tie!`);
   } else if (
-    (humanChoice === 'Rock' && computerChoice === 'Scissors') ||
-    (humanChoice === 'Paper' && computerChoice === 'Rock') ||
-    (humanChoice === 'Scissors' && computerChoice === 'Paper')
+    (humanChoice === 'rock' && computerChoice === 'scissors') ||
+    (humanChoice === 'paper' && computerChoice === 'rock') ||
+    (humanChoice === 'scissors' && computerChoice === 'paper')
   ) {
     humanScore++;
     console.log(`${humanChoice} beats ${computerChoice}. You win!`);
