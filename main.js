@@ -15,9 +15,17 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-function getHumanChoice() {
-  let humanChoice = prompt('Choose').toLowerCase();
-  return humanChoice;
+function getHumanChoice(message = 'Choose') {
+  let humanChoice = prompt(message).toLowerCase().trim();
+
+  if (
+    humanChoice === 'rock' ||
+    humanChoice === 'paper' ||
+    humanChoice === 'scissors'
+  ) {
+    return humanChoice;
+  }
+  getHumanChoice('Not valid, please try again');
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -49,8 +57,8 @@ function playRound(humanChoice, computerChoice) {
 function playGame() {
   const computerSelection = getComputerChoice();
   const humanSelection = getHumanChoice();
-  roundCounter++;
 
+  roundCounter += 1;
   console.log(`Round: ${roundCounter}`);
   playRound(humanSelection, computerSelection);
 
