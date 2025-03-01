@@ -41,24 +41,24 @@ function getHumanChoice(message = 'Rock, paper or scissors?') {
 }
 
 function capitalize(string) {
-  return string.at(1).toUpperCase() + string.slice(1).toLowerCase();
+  return string.at(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
 function playRound(humanChoice, computerChoice) {
   console.log('Round', roundCount + 1);
 
   if (humanChoice === computerChoice) {
-    console.log(`${humanChoice} vs ${computerChoice}. It's a draw!`);
+    console.log(`${capitalize(humanChoice)} vs ${computerChoice}. It's a draw!`);
   } else if (
     (humanChoice === 'rock' && computerChoice === 'scissors') ||
     (humanChoice === 'paper' && computerChoice === 'rock') ||
     (humanChoice === 'scissors' && computerChoice === 'paper')
   ) {
     humanScore++;
-    console.log(`${humanChoice} beats ${computerChoice}. You win!`);
+    console.log(`${capitalize(humanChoice)} beats ${computerChoice}. You win!`);
   } else {
     computerScore++;
-    console.log(`${computerChoice} beats ${humanChoice}. You lose!`);
+    console.log(`${capitalize(computerChoice)} beats ${humanChoice}. You lose!`);
   }
 
   roundCount++;
