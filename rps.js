@@ -22,7 +22,7 @@ function getHumanChoice(message = 'Rock, paper or scissors?') {
   let humanChoice = prompt(message);
 
   if (humanChoice === null) {
-    console.log('Game forfeited. Refresh to play again!');
+    console.log('Game forfeited. Reload to play again!');
     gameActive = false;
     return null;
   } else {
