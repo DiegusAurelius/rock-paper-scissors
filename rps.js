@@ -6,9 +6,9 @@ let gameActive = true;
 function getComputerChoice() {
   let computerChoice;
 
-  let randomNumber = Math.floor(Math.random() * 3) + 1;
+  let random = Math.floor(Math.random() * 3) + 1;
 
-  if (randomNumber === 1) {
+  if (random === 1) {
     computerChoice = 'rock';
   } else if (randomNumber === 2) {
     computerChoice = 'paper';
@@ -41,15 +41,18 @@ function getHumanChoice(message = 'Rock, paper or scissors?') {
   }
 }
 
+// Format first choice in round
 function capitalize(string) {
-  return string.at(0).toUpperCase() + string.slice(1).toLowerCase();
+  return string[0].toUpperCase() + string.slice(1).toLowerCase();
 }
 
 function playRound(humanChoice, computerChoice) {
   console.log('Round', roundCount + 1);
 
   if (humanChoice === computerChoice) {
-    console.log(`${capitalize(humanChoice)} vs ${computerChoice}. It's a draw!`);
+    console.log(
+      `${capitalize(humanChoice)} vs ${computerChoice}. It's a draw!`
+    );
   } else if (
     (humanChoice === 'rock' && computerChoice === 'scissors') ||
     (humanChoice === 'paper' && computerChoice === 'rock') ||
@@ -59,7 +62,9 @@ function playRound(humanChoice, computerChoice) {
     console.log(`${capitalize(humanChoice)} beats ${computerChoice}. You win!`);
   } else {
     computerScore++;
-    console.log(`${capitalize(computerChoice)} beats ${humanChoice}. You lose!`);
+    console.log(
+      `${capitalize(computerChoice)} beats ${humanChoice}. You lose!`
+    );
   }
 
   roundCount++;
@@ -86,6 +91,7 @@ function playNextRound() {
     } else {
       console.log(`The game is a draw!`);
     }
+    console.log('Reload to play again');
   }
 }
 
