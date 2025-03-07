@@ -6,9 +6,9 @@ let gameActive = true;
 function getComputerChoice() {
   let computerChoice;
 
-  let random = Math.floor(Math.random() * 3) + 1;
+  let randomNumber = Math.floor(Math.random() * 3) + 1;
 
-  if (random === 1) {
+  if (randomNumber === 1) {
     computerChoice = 'rock';
   } else if (randomNumber === 2) {
     computerChoice = 'paper';
@@ -69,6 +69,16 @@ function playRound(humanChoice, computerChoice) {
 
   roundCount++;
   console.log(`You ${humanScore} | Computer ${computerScore}`);
+
+  // Only when one round needs to be played.
+  if (humanScore > computerScore) {
+    console.log('You won the game!');
+  } else if (humanScore < computerScore) {
+    console.log('You lost the game!');
+  } else {
+    console.log(`The game is a draw!`);
+  }
+  console.log('Reload to play again');
 }
 
 function playNextRound() {
@@ -80,7 +90,8 @@ function playNextRound() {
 
       playRound(humanPick, computerPick);
 
-      playNextRound();
+      // For now, remove the logic that plays exactly five rounds.
+      // playNextRound();
     }
   } else {
     console.log('Game over');
