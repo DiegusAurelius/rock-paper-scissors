@@ -1,7 +1,18 @@
+let results = document.querySelector('.results');
+let para = document.createElement('p');
+let human = document.querySelector('.human');
+let computer = document.querySelector('.computer');
+let draw = document.querySelector('.draw');
+para.textContent = 'Select your weapon';
+results.appendChild(para);
+human.textContent = 0;
+draw.textContent = 0;
+computer.textContent = 0;
+let round = 0;
 let roundCount = 0;
 let humanScore = 0;
+let drawScore = 0;
 let computerScore = 0;
-let gameActive = true;
 
 function getComputerChoice() {
   let computerChoice;
@@ -19,27 +30,26 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-function getHumanChoice(message = 'Rock, paper or scissors?') {
-  let humanChoice = prompt(message);
+let humanChoice;
 
-  if (humanChoice === null) {
-    console.log('Game forfeited. Reload to play again!');
-    gameActive = false;
-    return null;
-  } else {
-    humanChoice = humanChoice.trim().toLowerCase();
-  }
+const buttons = document.querySelector('.buttons');
 
-  if (
-    humanChoice === 'rock' ||
-    humanChoice === 'paper' ||
-    humanChoice === 'scissors'
-  ) {
-    return humanChoice;
-  } else {
-    return getHumanChoice('Try again: rock, paper or scissors?');
+buttons.addEventListener('click', (e) => {
+  switch (e.target.textContent) {
+    case 'Rock':
+      humanChoice = 'rock';
+      playNextRound();
+      break;
+    case 'Paper':
+      humanChoice = 'paper';
+      playNextRound();
+      break;
+    case 'Scissors':
+      humanChoice = 'scissors';
+      playNextRound();
+      break;
   }
-}
+});
 
 // Format first choice in round
 function capitalize(string) {
@@ -47,73 +57,74 @@ function capitalize(string) {
 }
 
 function playRound(humanChoice, computerChoice) {
-  console.log('Round', roundCount + 1);
-
   if (humanChoice === computerChoice) {
-    console.log(
-      `${capitalize(humanChoice)} vs ${computerChoice}. It's a draw!`
-    );
+    drawScore++;
+
+    para.textContent = `${capitalize(
+      humanChoice
+    )} vs ${computerChoice}. It's a draw!`;
   } else if (
     (humanChoice === 'rock' && computerChoice === 'scissors') ||
     (humanChoice === 'paper' && computerChoice === 'rock') ||
     (humanChoice === 'scissors' && computerChoice === 'paper')
   ) {
     humanScore++;
-    console.log(`${capitalize(humanChoice)} beats ${computerChoice}. You win!`);
+    para.textContent = `${capitalize(
+      humanChoice
+    )} beats ${computerChoice}. You win!`;
   } else {
     computerScore++;
-    console.log(
-      `${capitalize(computerChoice)} beats ${humanChoice}. You lose!`
-    );
+    para.textContent = `${capitalize(
+      computerChoice
+    )} beats ${humanChoice}. You lose!`;
   }
 
   roundCount++;
-  console.log(`You ${humanScore} | Computer ${computerScore}`);
+  human.textContent = humanScore;
+  draw.textContent = drawScore;
+  computer.textContent = computerScore;
 
-  // Only when one round needs to be played.
-  if (humanScore > computerScore) {
-    console.log('You won the game!');
-  } else if (humanScore < computerScore) {
-    console.log('You lost the game!');
-  } else {
-    console.log(`The game is a draw!`);
+  if (humanScore === 5 || computerScore === 5) {
+    if (humanScore > computerScore) {
+      para.textContent = 'You won the game!';
+    } else if (humanScore < computerScore) {
+      para.textContent = 'You lost the game!';
+    } else {
+      para.textContent = `The game is a draw!`;
+    }
+    const resetButton = document.createElement('button');
+    resetButton.textContent = 'Play again';
+    resetButton.classList.add('resetBtn');
+    resetButton.addEventListener('click', () => {
+      resetButton.remove();
+      resetGame();
+    });
+    results.appendChild(resetButton);
+    document.querySelectorAll('.weapon').forEach((button) => {
+      button.disabled = true;
+    });
   }
-  console.log('Reload to play again');
 }
 
 function playNextRound() {
-  if (gameActive && roundCount < 5) {
-    const humanPick = getHumanChoice();
+  const humanPick = humanChoice;
 
-    if (gameActive) {
-      const computerPick = getComputerChoice();
+  const computerPick = getComputerChoice();
 
-      playRound(humanPick, computerPick);
-
-      // For now, remove the logic that plays exactly five rounds.
-      // playNextRound();
-    }
-  } else {
-    console.log('Game over');
-    if (humanScore > computerScore) {
-      console.log('You won the game!');
-    } else if (humanScore < computerScore) {
-      console.log('You lost the game!');
-    } else {
-      console.log(`The game is a draw!`);
-    }
-    console.log('Reload to play again');
-  }
+  playRound(humanPick, computerPick);
 }
 
-function playGame() {
+function resetGame() {
   // reset everything
   roundCount = 0;
   humanScore = 0;
+  drawScore = 0;
   computerScore = 0;
-  gameActive = true;
-
-  playNextRound();
+  human.textContent = 0;
+  draw.textContent = 0;
+  computer.textContent = 0;
+  para.textContent = 'Select your weapon';
+  document.querySelectorAll('.weapon').forEach((button) => {
+    button.disabled = false;
+  });
 }
-
-playGame();
