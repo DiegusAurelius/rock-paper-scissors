@@ -292,6 +292,10 @@ header {
   text-align: center;
 }
 
+header > h1 {
+  font-size: var(--step-2);
+}
+
 main {
   flex: 1;
   display: flex;
@@ -314,6 +318,10 @@ footer {
 .score {
   display: flex;
   gap: 3em;
+  background-color: var(--color-black);
+  border-radius: var(--radius);
+  padding-block: var(--space-s);
+  padding-inline: var(--space-xs);
 }
 
 .score > div {
@@ -342,11 +350,13 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-inline: var(--space-m);
-  margin-block: var(--space-xl);
+  padding-inline: var(--space-s);
+  margin-block: var(--space-l);
   text-align: center;
-  height: 8em;
+  height: 9em;
   font-size: var(--step-2);
+  background-color: var(--color-black);
+  border-radius: var(--radius);
 }
 
 .results > p {
