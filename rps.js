@@ -6,7 +6,7 @@ const computer = document.querySelector('.computer');
 const draw = document.querySelector('.draw');
 const buttons = document.querySelector('.buttons');
 
-para.textContent = 'Select your weapon';
+para.textContent = 'Choose an option';
 results.appendChild(para);
 human.textContent = draw.textContent = computer.textContent = 0;
 
@@ -55,17 +55,23 @@ function capitalize(string) {
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     drawScore++;
-    para.textContent = `${capitalize(humanChoice)} vs ${computerChoice}. It's a draw!`;
+    para.textContent = `${capitalize(
+      humanChoice
+    )} vs ${computerChoice}. It's a draw!`;
   } else if (
     (humanChoice === 'rock' && computerChoice === 'scissors') ||
     (humanChoice === 'paper' && computerChoice === 'rock') ||
     (humanChoice === 'scissors' && computerChoice === 'paper')
   ) {
     humanScore++;
-    para.textContent = `${capitalize(humanChoice)} beats ${computerChoice}. You win!`;
+    para.textContent = `${capitalize(
+      humanChoice
+    )} beats ${computerChoice}. You win!`;
   } else {
     computerScore++;
-    para.textContent = `${capitalize(computerChoice)} beats ${humanChoice}. You lose!`;
+    para.textContent = `${capitalize(
+      computerChoice
+    )} beats ${humanChoice}. You lose!`;
   }
 
   updateScoreBoard();
@@ -117,7 +123,7 @@ function updateScoreBoard() {
 function resetGame() {
   humanScore = drawScore = computerScore = 0;
   updateScoreBoard();
-  para.textContent = 'Select your weapon';
+  para.textContent = 'Choose an option';
   weaponButtons.forEach((button) => {
     button.disabled = false;
   });
