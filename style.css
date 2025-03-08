@@ -345,6 +345,14 @@ footer {
   font-size: var(--step-2);
 }
 
+.results > p {
+  white-space: pre-line;
+}
+
+.bold {
+  font-weight: 800;
+}
+
 .buttons {
   display: flex;
   flex-wrap: wrap;
@@ -359,5 +367,5 @@ footer {
   background-color: var(--color-primary);
   color: var(--color-black);
   font-size: var(--step--2);
-  margin-block-start: var(--space-s);
+  margin-block-start: var(--space-2xs);
 }

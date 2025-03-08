@@ -85,18 +85,25 @@ function playRound(humanChoice, computerChoice) {
   computer.textContent = computerScore;
 
   if (humanScore === 5 || computerScore === 5) {
+    let newPara = document.createElement('p');
+    newPara.classList.add('bold');
+
     if (humanScore > computerScore) {
-      para.textContent = 'You won the game!';
+      newPara.textContent = 'You won the game';
     } else if (humanScore < computerScore) {
-      para.textContent = 'You lost the game!';
+      newPara.textContent = 'You lost the game';
     } else {
-      para.textContent = `The game is a draw!`;
+      newPara.textContent = 'The game is a draw';
     }
+
+    results.appendChild(newPara);
+
     const resetButton = document.createElement('button');
     resetButton.textContent = 'Play again';
     resetButton.classList.add('resetBtn');
     resetButton.addEventListener('click', () => {
       resetButton.remove();
+      newPara.remove();
       resetGame();
     });
     results.appendChild(resetButton);
