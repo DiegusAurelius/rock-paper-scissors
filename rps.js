@@ -1,15 +1,16 @@
-let results = document.querySelector('.results');
-let para = document.createElement('p');
-let human = document.querySelector('.human');
-let computer = document.querySelector('.computer');
-let draw = document.querySelector('.draw');
+const results = document.querySelector('.results');
+const weaponButtons = document.querySelectorAll('.weapon');
+const para = document.createElement('p');
+const human = document.querySelector('.human');
+const computer = document.querySelector('.computer');
+const draw = document.querySelector('.draw');
+const buttons = document.querySelector('.buttons');
+
 para.textContent = 'Select your weapon';
 results.appendChild(para);
-human.textContent = 0;
-draw.textContent = 0;
-computer.textContent = 0;
-let round = 0;
-let roundCount = 0;
+human.textContent = draw.textContent = computer.textContent = 0;
+
+let humanChoice;
 let humanScore = 0;
 let drawScore = 0;
 let computerScore = 0;
@@ -30,10 +31,6 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-let humanChoice;
-
-const buttons = document.querySelector('.buttons');
-
 buttons.addEventListener('click', (e) => {
   switch (e.target.textContent) {
     case 'Rock':
@@ -51,7 +48,6 @@ buttons.addEventListener('click', (e) => {
   }
 });
 
-// Format first choice in round
 function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1).toLowerCase();
 }
@@ -59,79 +55,70 @@ function capitalize(string) {
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     drawScore++;
-
-    para.textContent = `${capitalize(
-      humanChoice
-    )} vs ${computerChoice}. It's a draw!`;
+    para.textContent = `${capitalize(humanChoice)} vs ${computerChoice}. It's a draw!`;
   } else if (
     (humanChoice === 'rock' && computerChoice === 'scissors') ||
     (humanChoice === 'paper' && computerChoice === 'rock') ||
     (humanChoice === 'scissors' && computerChoice === 'paper')
   ) {
     humanScore++;
-    para.textContent = `${capitalize(
-      humanChoice
-    )} beats ${computerChoice}. You win!`;
+    para.textContent = `${capitalize(humanChoice)} beats ${computerChoice}. You win!`;
   } else {
     computerScore++;
-    para.textContent = `${capitalize(
-      computerChoice
-    )} beats ${humanChoice}. You lose!`;
+    para.textContent = `${capitalize(computerChoice)} beats ${humanChoice}. You lose!`;
   }
 
-  roundCount++;
-  human.textContent = humanScore;
-  draw.textContent = drawScore;
-  computer.textContent = computerScore;
+  updateScoreBoard();
 
   if (humanScore === 5 || computerScore === 5) {
-    let newPara = document.createElement('p');
-    newPara.classList.add('bold');
-
-    if (humanScore > computerScore) {
-      newPara.textContent = 'You won the game';
-    } else if (humanScore < computerScore) {
-      newPara.textContent = 'You lost the game';
-    } else {
-      newPara.textContent = 'The game is a draw';
-    }
-
-    results.appendChild(newPara);
-
-    const resetButton = document.createElement('button');
-    resetButton.textContent = 'Play again';
-    resetButton.classList.add('resetBtn');
-    resetButton.addEventListener('click', () => {
-      resetButton.remove();
-      newPara.remove();
-      resetGame();
-    });
-    results.appendChild(resetButton);
-    document.querySelectorAll('.weapon').forEach((button) => {
-      button.disabled = true;
-    });
+    endGame();
   }
+}
+
+function endGame() {
+  let newPara = document.createElement('p');
+  newPara.classList.add('bold');
+
+  if (humanScore > computerScore) {
+    newPara.textContent = 'You won the game';
+  } else if (humanScore < computerScore) {
+    newPara.textContent = 'You lost the game';
+  } else {
+    newPara.textContent = 'The game is a draw';
+  }
+
+  results.appendChild(newPara);
+
+  const resetButton = document.createElement('button');
+  resetButton.textContent = 'Play again';
+  resetButton.classList.add('resetBtn');
+  resetButton.addEventListener('click', () => {
+    resetButton.remove();
+    newPara.remove();
+    resetGame();
+  });
+
+  results.appendChild(resetButton);
+  weaponButtons.forEach((button) => (button.disabled = true));
 }
 
 function playNextRound() {
-  const humanPick = humanChoice;
+  const computerChoice = getComputerChoice();
 
-  const computerPick = getComputerChoice();
+  playRound(humanChoice, computerChoice);
+}
 
-  playRound(humanPick, computerPick);
+function updateScoreBoard() {
+  human.textContent = humanScore;
+  draw.textContent = drawScore;
+  computer.textContent = computerScore;
 }
 
 function resetGame() {
-  // reset everything
-  roundCount = 0;
-  humanScore = 0;
-  drawScore = 0;
-  computerScore = 0;
-  human.textContent = 0;
-  draw.textContent = 0;
-  computer.textContent = 0;
+  humanScore = drawScore = computerScore = 0;
+  updateScoreBoard();
   para.textContent = 'Select your weapon';
-  document.querySelectorAll('.weapon').forEach((button) => {
+  weaponButtons.forEach((button) => {
     button.disabled = false;
   });
 }

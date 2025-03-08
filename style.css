@@ -338,10 +338,14 @@ footer {
 }
 
 .results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding-inline: var(--space-m);
   margin-block: var(--space-xl);
   text-align: center;
-  height: 5em;
+  height: 8em;
   font-size: var(--step-2);
 }
 
