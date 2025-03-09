@@ -109,6 +109,7 @@ function endGame() {
   });
 
   results.appendChild(resetButton);
+
   weaponButtons.forEach((button) => (button.disabled = true));
 }
 
