@@ -86,7 +86,7 @@ function endGame() {
   newPara.classList.add('bold');
 
   if (humanScore > computerScore) {
-    human.classList.add('winner');
+    newPara.textContent = 'You won the game';
     human.style.color = `hsl(120, 85%, 30%)`;
     computer.style.color = `hsl(0, 85%, 50%)`;
   } else if (humanScore < computerScore) {
