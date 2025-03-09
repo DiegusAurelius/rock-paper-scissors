@@ -241,6 +241,7 @@ button {
   padding-block: var(--space-3xs);
   padding-inline: var(--space-xs);
   font-weight: 800;
+  transition: all 0.3s ease;
 }
 
 button:hover {
