@@ -247,6 +247,10 @@ button:hover {
   opacity: 0.9;
 }
 
+button:disabled {
+  opacity: 0.5;
+}
+
 a:not([class]) {
   color: var(--color-link);
   text-decoration: none;
