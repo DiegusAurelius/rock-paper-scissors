@@ -86,9 +86,13 @@ function endGame() {
   newPara.classList.add('bold');
 
   if (humanScore > computerScore) {
-    newPara.textContent = 'You won the game';
+    human.classList.add('winner');
+    human.style.color = `hsl(120, 85%, 30%)`;
+    computer.style.color = `hsl(0, 85%, 50%)`;
   } else if (humanScore < computerScore) {
     newPara.textContent = 'You lost the game';
+    human.style.color = `hsl(0, 85%, 50%)`;
+    computer.style.color = `hsl(120, 85%, 30%)`;
   } else {
     newPara.textContent = 'The game is a draw';
   }
@@ -115,6 +119,8 @@ function playNextRound() {
 }
 
 function updateScoreBoard() {
+  human.style.removeProperty('color');
+  computer.style.removeProperty('color');
   human.textContent = humanScore;
   draw.textContent = drawScore;
   computer.textContent = computerScore;

@@ -7,6 +7,7 @@
   --color-link: hsl(208, 100%, 62%);
   --color-primary: hsl(50, 85%, 50%);
   --color-danger: hsl(0, 85%, 50%);
+  --color-positive: hsl(120, 85%, 30%);
 
   --space-3xs: clamp(0.31rem, 0.31rem + 0vw, 0.31rem);
   --space-2xs: clamp(0.56rem, 0.54rem + 0.11vw, 0.63rem);
@@ -340,6 +341,14 @@ footer {
 .score > div > span:last-child {
   font-size: var(--step-3);
   font-weight: 800;
+}
+
+.winner {
+  color: var(--color-positive);
+}
+
+.loser {
+  color: var(--color-danger);
 }
 
 .human,
