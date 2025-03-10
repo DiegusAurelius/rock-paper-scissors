@@ -64,7 +64,7 @@ function capitalize(string) {
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     drawScore++;
-    para.textContent = `It's a draw!`;
+    para.textContent = `It's a draw`;
   } else if (
     (humanChoice === 'rock' && computerChoice === 'scissors') ||
     (humanChoice === 'paper' && computerChoice === 'rock') ||
