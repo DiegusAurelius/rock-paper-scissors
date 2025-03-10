@@ -402,15 +402,12 @@ footer {
 
 .picks {
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
-  padding: var(--space-s);
+  padding-inline: var(--space-2xs);
   font-size: var(--step-5);
-  text-transform: uppercase;
-  font-weight: 800;
-  color: var(--color-primary);
-  line-height: var(--leading-sm);
 }

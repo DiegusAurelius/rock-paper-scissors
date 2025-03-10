@@ -71,14 +71,10 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === 'scissors' && computerChoice === 'paper')
   ) {
     humanScore++;
-    para.textContent = `${capitalize(
-      humanChoice
-    )} beats ${computerChoice}. You win!`;
+    para.textContent = `${capitalize(humanChoice)} beats ${computerChoice}`;
   } else {
     computerScore++;
-    para.textContent = `${capitalize(
-      computerChoice
-    )} beats ${humanChoice}. You lose!`;
+    para.textContent = `${capitalize(computerChoice)} beats ${humanChoice}`;
   }
 
   updateScoreBoard();
