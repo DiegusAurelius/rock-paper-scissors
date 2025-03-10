@@ -374,7 +374,7 @@ footer {
   border-radius: var(--radius);
 }
 
-.results > p {
+.para {
   white-space: pre-line;
 }
 
