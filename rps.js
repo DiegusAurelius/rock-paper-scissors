@@ -5,6 +5,11 @@ const human = document.querySelector('.human');
 const computer = document.querySelector('.computer');
 const draw = document.querySelector('.draw');
 const buttons = document.querySelector('.buttons');
+const humanPick = document.querySelector('.human-pick');
+const computerPick = document.querySelector('.computer-pick');
+const rockEmoji = '👊';
+const paperEmoji = '🖐️';
+const scissorsEmoji = '✌️';
 
 human.textContent = draw.textContent = computer.textContent = 0;
 
@@ -20,10 +25,13 @@ function getComputerChoice() {
 
   if (randomNumber === 1) {
     computerChoice = 'rock';
+    computerPick.textContent = `${rockEmoji}`;
   } else if (randomNumber === 2) {
     computerChoice = 'paper';
+    computerPick.textContent = `${paperEmoji}`;
   } else if (randomNumber === 3) {
     computerChoice = 'scissors';
+    computerPick.textContent = `${scissorsEmoji}`;
   }
 
   return computerChoice;
@@ -33,14 +41,17 @@ buttons.addEventListener('click', (e) => {
   switch (e.target.textContent) {
     case 'Rock':
       humanChoice = 'rock';
+      humanPick.textContent = `${rockEmoji}`;
       playNextRound();
       break;
     case 'Paper':
       humanChoice = 'paper';
+      humanPick.textContent = `${paperEmoji}`;
       playNextRound();
       break;
     case 'Scissors':
       humanChoice = 'scissors';
+      humanPick.textContent = `${scissorsEmoji}`;
       playNextRound();
       break;
   }
@@ -53,9 +64,7 @@ function capitalize(string) {
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     drawScore++;
-    para.textContent = `${capitalize(
-      humanChoice
-    )} vs ${computerChoice}. It's a draw!`;
+    para.textContent = `It's a draw!`;
   } else if (
     (humanChoice === 'rock' && computerChoice === 'scissors') ||
     (humanChoice === 'paper' && computerChoice === 'rock') ||
@@ -127,6 +136,8 @@ function updateScoreBoard() {
 
 function resetGame() {
   humanScore = drawScore = computerScore = 0;
+  humanPick.textContent = '';
+  computerPick.textContent = '';
   updateScoreBoard();
   para.textContent = 'Choose an option';
   weaponButtons.forEach((button) => {

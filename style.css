@@ -151,7 +151,7 @@ h1 {
 }
 
 * + p {
-  margin-block-start: var(--space-s);
+  margin-block-start: var(--space-3xs);
 }
 
 /* Specific heading adjustments */
@@ -372,6 +372,7 @@ footer {
   font-size: var(--step-2);
   background-color: var(--color-black);
   border-radius: var(--radius);
+  position: relative;
 }
 
 .para {
@@ -397,4 +398,19 @@ footer {
   color: var(--color-black);
   font-size: var(--step--2);
   margin-block-start: var(--space-2xs);
+}
+
+.picks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-s);
+  font-size: var(--step-5);
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: var(--leading-sm);
 }
