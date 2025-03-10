@@ -1,13 +1,11 @@
 const results = document.querySelector('.results');
 const weaponButtons = document.querySelectorAll('.weapon');
-const para = document.createElement('p');
+const para = document.querySelector('.para');
 const human = document.querySelector('.human');
 const computer = document.querySelector('.computer');
 const draw = document.querySelector('.draw');
 const buttons = document.querySelector('.buttons');
 
-para.textContent = 'Choose an option';
-results.appendChild(para);
 human.textContent = draw.textContent = computer.textContent = 0;
 
 let humanChoice;
