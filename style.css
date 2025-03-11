@@ -1,6 +1,6 @@
 :root {
-  --color-dark: hsl(204, 16%, 6%);
-  --color-gray: hsl(210, 10%, 55%);
+  --color-dark: hsl(0, 0%, 0%);
+  --color-gray: hsla(211, 10%, 55%, 0.636);
   --color-light: hsl(210, 20%, 90%);
   --color-white: hsl(0, 0%, 100%);
   --color-black: hsl(0, 0%, 0%);
@@ -324,20 +324,18 @@ footer {
 
 .score {
   display: flex;
-  gap: 3em;
+  justify-content: space-between;
   background-color: var(--color-black);
   border-radius: var(--radius);
-  padding-block: var(--space-s);
-  padding-inline: var(--space-xs);
   font-size: var(--step--1);
   font-weight: 700;
 }
 
 .score > div {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 20%;
 }
 
 .score > div > span:last-child {
@@ -368,7 +366,8 @@ footer {
   justify-content: center;
   align-items: center;
   padding-inline: var(--space-s);
-  margin-block: var(--space-l);
+  margin-block-end: var(--space-l);
+  margin-block-start: var(--space-s);
   text-align: center;
   height: 9em;
   font-size: var(--step-1);
