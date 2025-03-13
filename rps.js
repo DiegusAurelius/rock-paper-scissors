@@ -123,8 +123,6 @@ function playNextRound() {
 }
 
 function updateScoreBoard() {
-  human.style.removeProperty('color');
-  computer.style.removeProperty('color');
   human.textContent = humanScore;
   draw.textContent = drawScore;
   computer.textContent = computerScore;
@@ -134,6 +132,8 @@ function resetGame() {
   humanScore = drawScore = computerScore = 0;
   humanPick.textContent = '';
   computerPick.textContent = '';
+  human.style.removeProperty('color');
+  computer.style.removeProperty('color');
   updateScoreBoard();
   para.textContent = 'Choose an option';
   weaponButtons.forEach((button) => {
